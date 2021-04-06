@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kgs to pounds Converter</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="converter"></div>
+    </body>
+    <script type="text/babel">
+        class Converter extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={kgs:"", result:"", pounds:2.204};
+            }
+            render(){
+                return(
+                    <div>
+                        <h2>KGS to Pounds converter</h2>
+                        <input type="Number" onChange={this.setKg} name="kgs" placeholder="kgs"/>
+                        <button onClick={this.pounds}>converter</button>
+                        <h2 id="result">{this.state.result}</h2>
+                    </div>
+                );
+            }
+
+            setKg=(event)=>{
+                var kg=event.target.value;
+                console.log(kg)
+                // var i=this.state.kgs
+                this.setState({kgs: kg});
+                console.log(this.state.kgs+" in kgs")
+            }
+
+            pounds=()=>{
+                // var i=document.getElementsByName("kgs")[0].value;
+                // i=parseFloat(i)
+                // console.log(this.state.kgs+" input")
+                const result= (this.state.kgs) *(this.state.pounds);
+                // const re=this.state.result;
+                this.setState({result: result});
+                // console.log(re+ "result")
+                // document.getElementById("result").innerHTML= i+"kgs is "+result+"pounds"
+            }
+
+            
+        }
+        ReactDOM.render(<Converter/>, document.getElementById("converter"));
+
+    </script>
+</html>
